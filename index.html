@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="display">
+            <div class="year">9</div>:
+            <div class="month">9</div>:
+            <div class="day">9</div>:
+            <div class="hour">9</div>:
+            <div class="min">9</div>:
+            <div class="sec">9</div>
+        </div>
+        <div class="enterTime">
+            <div class="yearInput"></div>
+            <div class="monthInput"></div>
+            <div class="dayInput"></div>
+            <div class="hourInput"></div>
+            <div class="minInput"><input type="number" min="0" max="59" value="0"></div>
+            <div class="secInput"><input type="number" min="0" max="59" value="0"></div><button type="submit"
+                onclick="setValues()">set</button>
+        </div>
+        <div class="control"></div>
+
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>

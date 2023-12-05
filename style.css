@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Digital";
+    src:
+        local("./DS-DIGI.TTF"),
+        url("./DS-DIGIB.TTF") format("opentype") tech(color-COLRv1),
+        url("./DS-DIGII.TTF") format("opentype"),
+        url("./DS-DIGIT.TTF") format("woff");
+}
+
+.container {
+    font-family: Digital;
+    font-weight: 900;
+    font-size: 5rem;
+    color: red;
+}
+
+.display {
+    display: flex;
+}
+
+.enterTime {
+    display: flex;
+}
+
+.secInput {
+    width: 100px;
+}
