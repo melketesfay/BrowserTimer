@@ -1,50 +1,104 @@
+let timer;
+
+let sec = 0;
+let min = 0;
+let hr = 0;
+
 function setValues() {
-  var sec = document.querySelector(".secInput input").value;
-  var min = document.querySelector(".minInput input").value;
-  var hr = document.querySelector(".hourInput input").value;
+  if (!timer) {
+    sec = document.querySelector(".secInput input").value;
+    min = document.querySelector(".minInput input").value;
+    hr = document.querySelector(".hourInput input").value;
+    document.getElementById("stop").innerHTML = "stop";
+    let arr = [sec, min, hr];
 
-  function secondCounter() {
-    //set Seconds
-    let secContent = document.querySelector(".sec");
-    let secEdited = sec.toString().padStart(2, '0');
-    secContent.innerHTML = secEdited;
-
-    //set Minutes
-    let minContent = document.querySelector(".min");
-    let minEdited = min.toString().padStart(2, '0');
-    minContent.innerHTML = minEdited;
-
-    //set Hours
-
-    let hrContent = document.querySelector(".hour");
-    let hrEdited = hr.toString().padStart(2, '0');
-
-    hrContent.innerHTML = hrEdited;
-    if (sec > 0 ) {
-      --sec;
-      
-      
-    } else if (min > 0) {
-      sec = 59;
-
-      --min;
-    } else if (hr > 0) {
-      min = 59;
-
-      --hr;
-    }
-    if (hr == 0 && min == 0) {
-      document.querySelector(".container").style.color = "red";
+    //don't start timer if time is 0 (avoid annecessary sound alarm)
+    if (arr.some((e) => e > 0)) {
+      timer = setInterval(secondCounter, 1000);
     }
   }
-
-  second = setInterval(secondCounter, 1000);
-
-  return second;
 }
 
-function reLoad() {
-  clearInterval(setValues().second);
-  this.location.reload();
+function secondCounter() {
+  //set Seconds
+  let secContent = document.querySelector(".sec");
+  let secEdited = sec.toString().padStart(2, "0");
+  secContent.innerHTML = secEdited;
+
+  //set Minutes
+  let minContent = document.querySelector(".min");
+  let minEdited = min.toString().padStart(2, "0");
+  minContent.innerHTML = minEdited;
+
+  //set Hours
+
+  let hrContent = document.querySelector(".hour");
+  let hrEdited = hr.toString().padStart(2, "0");
+
+  hrContent.innerHTML = hrEdited;
+  if (sec > 0) {
+    --sec;
+  } else if (min > 0) {
+    sec = 59;
+
+    --min;
+  } else if (hr > 0) {
+    min = 59;
+    sec = 59;
+    --hr;
+  }
+  if (hr == 0 && min == 0) {
+    document.querySelector(".display").style.color = "red";
+  } else {
+    document.querySelector(".display").style.color = "rgb(47, 135, 47)";
+  }
+
+  let arr = [secEdited, minEdited, hrEdited];
+  let end;
+  if (arr.every((e) => e == 0)) {
+    document.getElementById("alarm").play();
+  }
+  console.log("Timer running");
+  return arr;
 }
 
+// function startCounter() {
+//   setValues();
+//   timer = setInterval(secondCounter, 1000);
+// }
+// second = setInterval(secondCounter, 1000);
+
+function stopCount() {
+  let arrTest = [
+    document.querySelector(".sec").innerHTML,
+    document.querySelector(".min").innerHTML,
+    document.querySelector(".hour").innerHTML,
+  ];
+  if (timer && arrTest.some((e) => e > 0)) {
+    clearInterval(timer);
+    timer = false;
+    document.getElementById("stop").innerHTML = "go";
+    document.getElementById("alarm").pause();
+    console.log("timer stopped");
+  } else if (arrTest.some((e) => e > 0)) {
+    document.getElementById("stop").innerHTML = "stop";
+    timer = setInterval(secondCounter, 1000);
+  } else {
+    clearInterval(timer);
+    timer = false;
+    document.getElementById("alarm").pause();
+  }
+  // this.location.reload();
+}
+
+function resetCounter() {
+  clearInterval(timer);
+  timer = false;
+  document.getElementById("stop").innerHTML = "stop";
+  document.querySelector(".sec").innerHTML = "00";
+  document.querySelector(".min").innerHTML = "00";
+  document.querySelector(".hour").innerHTML = "00";
+  document.querySelector(".secInput input").value = "0";
+  document.querySelector(".minInput input").value = "0";
+  document.querySelector(".hourInput input").value = "0";
+}

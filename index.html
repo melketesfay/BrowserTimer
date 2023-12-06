@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="container">
-      <div class="display">
-        <div class="year">00</div>
-        :
-        <div class="month">00</div>
-        :
-        <div class="day">00</div>
-        :
-        <div class="hour">00</div>
-        :
-        <div class="min">00</div>
-        :
-        <div class="sec">00</div>
-      </div>
-      <div class="enterTime">
-        <div class="yearInput"></div>
-        <div class="monthInput"></div>
-        <div class="dayInput"></div>
-        <div class="hourInput">
-          <input type="number" min="0" max="23" value="0" />
+        <div class="display">
+
+            <div class="hour">00</div>:<div class="min">00</div>:<div class="sec">00</div>
         </div>
-        <div class="minInput">
-          <input type="number" min="0" max="59" value="0" />
+        <div class="enterTime">
+
+            <div class="hourInput">
+                <input id="hourInput" type="number" min="0" max="23" value="0" />
+            </div>
+            <div class="minInput">
+                <input id="minInput" type="number" min="0" max="59" value="0" />
+            </div>
+            <div class="secInput">
+                <input id="secInput" type="number" min="0" max="59" value="0" />
+            </div>
         </div>
-        <div class="secInput">
-          <input type="number" min="0" max="59" value="0" />
+        <div class="control">
+            <button type="submit" onclick="setValues()">Start</button>
+            <button id="stop" onclick="stopCount()">Stop</button>
+            <button onclick="resetCounter()">Reset</button>
         </div>
-      </div>
-      <div class="control">
-        <button type="submit" onclick="setValues()">Start</button>
-        <button>Stop</button>
-        <button onclick="reLoad()">Reset</button>
-      </div>
     </div>
-  </body>
-  <script src="script.js"></script>
+</body>
+<audio id="alarm">
+    <source src="digital-alarm-clock.mp3" type="audio/mp3">
+</audio>
+<script src="script.js"></script>
+
 </html>
