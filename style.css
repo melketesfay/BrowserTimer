@@ -7,21 +7,58 @@
         url("./DS-DIGIT.TTF") format("woff");
 }
 
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 10px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: black;
+    margin: 0;
+}
 .container {
-    font-family: Digital;
-    font-weight: 900;
-    font-size: 5rem;
+    width: 100vw;
+    height: 100vh;
+    justify-self: center;
+    
+    
     color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .display {
     display: flex;
+    justify-content: center;
+    gap: 1vw;
+    font-family: Digital;
+    font-weight: 900;
+    font-size: 10vw;
 }
 
 .enterTime {
     display: flex;
+    justify-content: center;
+    gap: 1vw;
+   
 }
 
-.secInput {
-    width: 100px;
+.control{
+    display: flex;
+    justify-content: center;
 }
+
+
+
+@media only screen and (max-width: 600px) {
+   
+  }

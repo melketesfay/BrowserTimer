@@ -6,18 +6,24 @@ function setValues() {
   function secondCounter() {
     //set Seconds
     let secContent = document.querySelector(".sec");
-    secContent.innerHTML = sec;
+    let secEdited = sec.toString().padStart(2, '0');
+    secContent.innerHTML = secEdited;
 
     //set Minutes
     let minContent = document.querySelector(".min");
-    minContent.innerHTML = min;
+    let minEdited = min.toString().padStart(2, '0');
+    minContent.innerHTML = minEdited;
 
     //set Hours
 
     let hrContent = document.querySelector(".hour");
-    hrContent.innerHTML = hr;
-    if (sec > 0) {
+    let hrEdited = hr.toString().padStart(2, '0');
+
+    hrContent.innerHTML = hrEdited;
+    if (sec > 0 ) {
       --sec;
+      
+      
     } else if (min > 0) {
       sec = 59;
 
@@ -41,3 +47,4 @@ function reLoad() {
   clearInterval(setValues().second);
   this.location.reload();
 }
+
