@@ -42,42 +42,198 @@ body {
     gap: 0vw;
     font-family: Digital;
     font-weight: 900;
-    color: rgb(47, 135, 47);
-    font-size: 10vw;
+    gap: 2vw;
+
 }
 
+.hour,
+.min,
 .sec {
-    min-width: 11vw;
-
-}
-
-.min {
-    min-width: 11vw;
-}
-
-.hour {
+    color: rgb(49, 197, 19);
+    font-size: 10vw;
+    justify-self: center;
+    align-self: center;
     min-width: 11vw;
 }
+
+.text {
+    font-size: 5vw;
+    justify-self: center;
+    align-self: center;
+    color: rgb(161, 14, 14);
+}
+
+.display_sec,
+.display_min,
+.display_hour {
+    min-width: 11vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1vw;
+}
+
+
 
 .enterTime {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-left: 1vw;
     gap: 0vw;
 
 }
 
 .enterTime input {
-    font-size: 5vw;
-    min-width: 6vw;
+    font-size: 7vw;
+    font-weight: 900;
+    max-width: 9vw;
     font-family: Digital;
-    ;
+    background-color: rgb(31, 2, 2);
+    color: rgb(49, 197, 19);
+    outline-style: none;
+    appearance: none;
+    border: none;
+
 }
+
+.enterTime label {
+    font-size: 4vw;
+    font-weight: 900;
+    max-width: 9vw;
+    font-family: Digital;
+    background-color: rgb(31, 2, 2);
+    color: rgb(161, 14, 14);
+    outline-style: none;
+    appearance: none;
+    border: none;
+
+}
+
+
+
+.enterTime div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+
+    -webkit-appearance: "Always Show Up/Down Arrows";
+
+    color: rgb(49, 197, 19);
+
+}
+
+
+
 
 .control {
     display: flex;
     justify-content: center;
+    gap: 1vw;
+}
+
+.control button {
+    font-size: 4vw;
+    border-radius: 1rem;
+    background-color: rgb(0, 0, 0);
+    color: rgb(49, 197, 19);
+    font-family: Digital;
+    border: 2px solid red;
 }
 
 
 
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+
+
+
+    .display {
+        min-width: 11vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+    .hour,
+    .min,
+    .sec {
+        color: rgb(49, 197, 19);
+        font-size: 20vw;
+        justify-self: center;
+        align-self: center;
+        min-width: 11vw;
+    }
+
+    .text {
+        font-size: 10vw;
+        justify-self: center;
+        align-self: center;
+        color: rgb(161, 14, 14);
+    }
+
+    .enterTime input {
+        font-size: 15vw;
+        font-weight: 900;
+        max-width: 25vw;
+        font-family: Digital;
+        background-color: rgb(31, 2, 2);
+        color: rgb(49, 197, 19);
+        outline-style: none;
+        appearance: none;
+        border: none;
+
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+
+        -webkit-appearance: "Always Show Up/Down Arrows";
+
+        color: rgb(49, 197, 19);
+
+    }
+
+
+    .enterTime label {
+        font-size: 6vw;
+        font-weight: 900;
+        max-width: 9vw;
+        font-family: Digital;
+        background-color: rgb(31, 2, 2);
+        color: rgb(161, 14, 14);
+        outline-style: none;
+        appearance: none;
+        border: none;
+
+    }
+
+    .control button {
+        font-size: 8vw;
+        border-radius: 1rem;
+        background-color: rgb(0, 0, 0);
+        color: rgb(49, 197, 19);
+        font-family: Digital;
+        border: 2px solid red;
+    }
+
+    .enterTime {
+
+        margin-left: 6vw;
+
+
+    }
+
+    .container {
+        gap: 5vw;
+    }
+}

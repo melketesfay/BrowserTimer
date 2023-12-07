@@ -4,6 +4,11 @@ let sec = 0;
 let min = 0;
 let hr = 0;
 
+document.querySelector(".secInput input").value = document
+  .querySelector(".secInput input")
+  .valuesec.toString()
+  .padStart(2, "0");
+
 function setValues() {
   if (!timer) {
     sec = document.querySelector(".secInput input").value;
@@ -48,9 +53,13 @@ function secondCounter() {
     --hr;
   }
   if (hr == 0 && min == 0) {
-    document.querySelector(".display").style.color = "red";
+    document
+      .querySelectorAll("#display")
+      .forEach((e) => (e.style.color = "red"));
   } else {
-    document.querySelector(".display").style.color = "rgb(47, 135, 47)";
+    document
+      .querySelectorAll("#display")
+      .forEach((e) => (e.style.color = "rgb(49, 197, 19)"));
   }
 
   let arr = [secEdited, minEdited, hrEdited];
@@ -98,7 +107,10 @@ function resetCounter() {
   document.querySelector(".sec").innerHTML = "00";
   document.querySelector(".min").innerHTML = "00";
   document.querySelector(".hour").innerHTML = "00";
-  document.querySelector(".secInput input").value = "0";
-  document.querySelector(".minInput input").value = "0";
-  document.querySelector(".hourInput input").value = "0";
+  document.querySelector(".secInput input").value = "00";
+  document.querySelector(".minInput input").value = "00";
+  document.querySelector(".hourInput input").value = "00";
+  document
+    .querySelectorAll("#display")
+    .forEach((e) => (e.style.color = "rgb(49, 197, 19)"));
 }
