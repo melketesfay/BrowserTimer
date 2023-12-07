@@ -6,7 +6,7 @@ let hr = 0;
 
 document.querySelector(".secInput input").value = document
   .querySelector(".secInput input")
-  .valuesec.toString()
+  .value = sec.toString()
   .padStart(2, "0");
 
 function setValues() {
@@ -114,3 +114,23 @@ function resetCounter() {
     .querySelectorAll("#display")
     .forEach((e) => (e.style.color = "rgb(49, 197, 19)"));
 }
+
+
+
+// Keyboard Control
+
+
+document.addEventListener(
+  "keypress",
+  (event) => {
+    const keyName = event.key;
+
+    if (keyName === "Enter") {
+      setValues()
+    }else if(keyName === " ")
+{stopCount()}
+  else if(keyName === "Escape"){
+    resetCounter();
+  }
+}
+);
