@@ -10,7 +10,14 @@
 > - Timer changes the countdown numbers color when time left is under 1 min
 
 ## How to use this Timer
+
 This timer is online and you can use it via this link [Timer][https://stun.wanderleben.ch/]
+
+you can use the built in **buttons** to interact with the APP or if you have a Keyboard you can use the following keys to control:
+
+> - **Enter** Key for **Start**
+> - **Space** key for **Stop/Go**
+> - **Escape** key for **Reset**
 
 ## Feedbacks
 
@@ -20,12 +27,4 @@ Feedbacks are welcome except the following misssing features i didn't implement 
 > - number iput style
 > - safari and firefox rendering issues
 
-
 Author &copy; Melke Tesfay
-
-
-
-
-
-
-
