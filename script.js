@@ -129,8 +129,12 @@ document.addEventListener(
       setValues()
     }else if(keyName === " ")
 {stopCount()}
-  else if(keyName === "Escape"){
+  else if(keyName.keyCode === 27){
     resetCounter();
   }
 }
 );
+
+
+
+document.addEventListener("keyup", (event)=> { if(event.key==="Escape"){resetCounter()}})
