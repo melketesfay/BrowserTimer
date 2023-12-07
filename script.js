@@ -129,9 +129,7 @@ document.addEventListener(
       setValues()
     }else if(keyName === " ")
 {stopCount()}
-  else if(keyName.keyCode === 27){
-    resetCounter();
-  }
+  
 }
 );
 
