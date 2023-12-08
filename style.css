@@ -204,6 +204,7 @@ input[type=number] {
         outline-style: none;
         appearance: none;
         border: none;
+        overflow: clip;
 
     }
 

@@ -20,6 +20,11 @@ function setValues() {
     document.getElementById("stop").innerHTML = "stop";
     let arr = [sec, min, hr];
 
+    if (arr[0] > 59 || arr[1] > 59 || arr[2] > 23) {
+      alert("Please Enter correct values: min & sec < 60, hr < 24 ");
+      return false;
+    }
+
     //don't start timer if time is 0 (avoid annecessary sound alarm)
     if (arr.some((e) => e > 0)) {
       document.getElementById("alarm").pause();
@@ -166,3 +171,38 @@ document.addEventListener("keyup", (event) => {
     resetCounter();
   }
 });
+
+// input fields enforce two number digits
+
+function addLeadingZero(event) {
+  // get maxlength attr
+  const maxLength = parseInt(event.target.getAttribute("maxlength"));
+  // check and flag if negative
+  const isNegative = parseInt(event.target.value) < 0;
+  // "0".repeat(maxLength) <-- create default pad with maxlength given
+  // Math.abs(event.target.value) to make sure we proceed with positive value
+  // append zero and slice last of attr maxlength value
+  let newValue = (
+    "0".repeat(maxLength) + Math.abs(event.target.value).toString()
+  ).slice(-maxLength);
+  // add - if flag negative is true
+  if (isNegative) {
+    newValue = "-" + newValue;
+  }
+  // change the value of input
+  event.target.value = newValue;
+}
+
+let inputControl = document.querySelectorAll("input");
+
+inputControl.forEach((e) => e.addEventListener("input", addLeadingZero));
+
+let buttons = document.querySelectorAll("button");
+
+function buttonEffect(event) {
+  this.style.backgroundColor = "red";
+  setTimeout(() => {
+    this.style.backgroundColor = "black";
+  }, 100);
+}
+buttons.forEach((e) => e.addEventListener("click", buttonEffect));
