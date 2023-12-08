@@ -81,15 +81,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 1vw;
-    gap: 0vw;
+
+    gap: 2vw;
 
 }
+
+
 
 .enterTime input {
     font-size: 7vw;
     font-weight: 900;
-    max-width: 9vw;
+    max-width: 7.5vw;
     font-family: Digital;
     background-color: rgb(31, 2, 2);
     color: rgb(49, 197, 19);
@@ -124,11 +126,19 @@ body {
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
 
-    -webkit-appearance: "Always Show Up/Down Arrows";
-
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
     color: rgb(49, 197, 19);
 
 }
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: none;
+}
+
+
 
 
 
@@ -187,7 +197,7 @@ input[type=number]::-webkit-outer-spin-button {
     .enterTime input {
         font-size: 15vw;
         font-weight: 900;
-        max-width: 25vw;
+        max-width: 16vw;
         font-family: Digital;
         background-color: rgb(31, 2, 2);
         color: rgb(49, 197, 19);
@@ -200,10 +210,17 @@ input[type=number]::-webkit-outer-spin-button {
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
 
-        -webkit-appearance: "Always Show Up/Down Arrows";
-
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+        margin: 0;
+        appearance: none;
         color: rgb(49, 197, 19);
 
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+        appearance: none;
     }
 
 
@@ -230,12 +247,7 @@ input[type=number]::-webkit-outer-spin-button {
         border: 2px solid red;
     }
 
-    .enterTime {
 
-        margin-left: 6vw;
-
-
-    }
 
     .container {
         gap: 5vw;

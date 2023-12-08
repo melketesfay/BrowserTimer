@@ -1,3 +1,5 @@
+console.log(`Hallo from Author \u00A9 Melke`);
+
 let timer;
 
 let sec = 0;
