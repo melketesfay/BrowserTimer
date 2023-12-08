@@ -23,8 +23,7 @@ you can use the built in **buttons** to interact with the APP or if you have a K
 
 Feedbacks are welcome except the following misssing features i didn't implement either on purpose or didn't have time to
 
-> - accepting only two digit numbers
-> - number iput style
+> - iPhone display dimensions
 > - safari and firefox rendering issues
 
 Author &copy; Melke Tesfay
