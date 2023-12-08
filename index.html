@@ -1,59 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <div class="container">
-      <div class="display">
-        <div class="display_hour">
-          <div class="text">HR</div>
-          <div class="hour" id="display">00</div>
-        </div>
-        <div class="display_min">
-          <div class="text">Min</div>
-          <div class="min" id="display">00</div>
-        </div>
-        <div class="display_sec">
-          <div class="text">Sec</div>
-          <div class="sec" id="display">00</div>
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-      <div class="enterTime">
-        <div class="hourInput">
-          <label for="hourInput">Hr</label>
-          <input
-            id="hourInput"
-            type="number"
-            min="0"
-            max="23"
-            value="00"
-            placeholder="hr"
-          />
-        </div>
-        <div class="minInput">
-          <label for="minInput">Min</label>
-          <input id="minInput" type="number" min="0" max="59" value="00" />
-        </div>
-        <div class="secInput">
-          <label for="secInput">Sec</label>
-          <input id="secInput" type="number" min="0" max="59" value="00" />
-        </div>
+<body>
+  <div class="container">
+    <div class="display">
+      <div class="display_hour">
+        <div class="text">HR</div>
+        <div class="hour" id="display">00</div>
       </div>
-      <div class="control">
-        <button type="submit" onclick="setValues()">Start</button>
-        <button id="stop" onclick="stopCount()">Stop</button>
-        <button onclick="resetCounter()">Reset</button>
+      <div class="display_min">
+        <div class="text">Min</div>
+        <div class="min" id="display">00</div>
+      </div>
+      <div class="display_sec">
+        <div class="text">Sec</div>
+        <div class="sec" id="display">00</div>
       </div>
     </div>
-  </body>
-  <audio id="alarm">
-    <source src="digital-alarm-clock.mp3" type="audio/mp3" />
-  </audio>
-  <script src="script.js"></script>
+
+    <div class="enterTime">
+      <div class="hourInput">
+        <label for="hourInput">Hr</label>
+        <input id="hourInput" type="number" min="0" max="23" value="00" placeholder="hr" />
+      </div>
+      <div class="minInput">
+        <label for="minInput">Min</label>
+        <input id="minInput" type="number" min="0" max="59" value="00" />
+      </div>
+      <div class="secInput">
+        <label for="secInput">Sec</label>
+        <input id="secInput" type="number" min="0" max="59" value="00" />
+      </div>
+    </div>
+    <div class="control">
+      <button type="submit" onclick="setValues()">Start</button>
+      <button id="stop" onclick="stopCount()">Stop</button>
+      <button onclick="resetCounter()">Reset</button>
+    </div>
+  </div>
+</body>
+<audio id="alarm">
+  <source id="soundSource" src="digital-alarm-clock.mp3" type="audio/mp3" />
+</audio>
+<script src="script.js"></script>
+
 </html>

@@ -4,10 +4,11 @@ let sec = 0;
 let min = 0;
 let hr = 0;
 
-document.querySelector(".secInput input").value = document
-  .querySelector(".secInput input")
-  .value = sec.toString()
-  .padStart(2, "0");
+document.querySelector(".secInput input").value = document.querySelector(
+  ".secInput input"
+).value = sec.toString().padStart(2, "0");
+
+//function called when START button is clicked
 
 function setValues() {
   if (!timer) {
@@ -19,9 +20,14 @@ function setValues() {
 
     //don't start timer if time is 0 (avoid annecessary sound alarm)
     if (arr.some((e) => e > 0)) {
+      document.getElementById("alarm").pause();
       timer = setInterval(secondCounter, 1000);
     }
+    // TRy stop alarm
+
+    //try stop
   }
+  document.getElementById("alarm").currentTime = 0;
 }
 
 function secondCounter() {
@@ -63,21 +69,44 @@ function secondCounter() {
   }
 
   let arr = [secEdited, minEdited, hrEdited];
-  let end;
   if (arr.every((e) => e == 0)) {
+    clearInterval(timer);
+    timer = false;
+    console.log(document.getElementById("alarm").currentTime);
+
     document.getElementById("alarm").play();
+    setTimeout(() => {
+      document.getElementById("alarm").pause();
+      console.log(document.getElementById("alarm").currentTime);
+      console.log(
+        "timer ended!!! sound alarm turned off automatically after 15sec"
+      );
+    }, 15000);
   }
+
   console.log("Timer running");
   return arr;
 }
 
-// function startCounter() {
-//   setValues();
-//   timer = setInterval(secondCounter, 1000);
+// // function stop and play audio
+// function stopAlarm() {
+//   let arr = secondCounter();
+//   if (arr.every((e) => e == 0)) {
+//     document.getElementById("alarm").play();
+//     setTimeout(() => {
+//       document.getElementById("alarm").pause();
+//       clearInterval(timer);
+//       timer = false;
+//       console.log("timer ended");
+//     }, 15000);
+//   }
 // }
-// second = setInterval(secondCounter, 1000);
+
+// document.addEventListener("click", stopAlarm);
+// // // function stop and play audio
 
 function stopCount() {
+  document.getElementById("alarm").currentTime = 0;
   let arrTest = [
     document.querySelector(".sec").innerHTML,
     document.querySelector(".min").innerHTML,
@@ -88,6 +117,7 @@ function stopCount() {
     timer = false;
     document.getElementById("stop").innerHTML = "go";
     document.getElementById("alarm").pause();
+
     console.log("timer stopped");
   } else if (arrTest.some((e) => e > 0)) {
     document.getElementById("stop").innerHTML = "stop";
@@ -95,12 +125,14 @@ function stopCount() {
   } else {
     clearInterval(timer);
     timer = false;
+
     document.getElementById("alarm").pause();
   }
-  // this.location.reload();
 }
 
 function resetCounter() {
+  document.getElementById("alarm").currentTime = 0;
+  document.getElementById("alarm").pause();
   clearInterval(timer);
   timer = false;
   document.getElementById("stop").innerHTML = "stop";
@@ -115,24 +147,20 @@ function resetCounter() {
     .forEach((e) => (e.style.color = "rgb(49, 197, 19)"));
 }
 
-
-
 // Keyboard Control
 
+document.addEventListener("keypress", (event) => {
+  const keyName = event.key;
 
-document.addEventListener(
-  "keypress",
-  (event) => {
-    const keyName = event.key;
+  if (keyName === "Enter") {
+    setValues();
+  } else if (keyName === " ") {
+    stopCount();
+  }
+});
 
-    if (keyName === "Enter") {
-      setValues()
-    }else if(keyName === " ")
-{stopCount()}
-  
-}
-);
-
-
-
-document.addEventListener("keyup", (event)=> { if(event.key==="Escape"){resetCounter()}})
+document.addEventListener("keyup", (event) => {
+  if (event.key === "Escape") {
+    resetCounter();
+  }
+});
