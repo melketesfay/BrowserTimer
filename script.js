@@ -33,8 +33,14 @@ function setValues() {
     // TRy stop alarm
 
     //try stop
+    //restart counter every timer start is pressed
+  } else if (timer) {
+    sec = document.querySelector(".secInput input").value;
+    min = document.querySelector(".minInput input").value;
+    hr = document.querySelector(".hourInput input").value;
+
+    document.getElementById("alarm").currentTime = 0;
   }
-  document.getElementById("alarm").currentTime = 0;
 }
 
 function secondCounter() {
