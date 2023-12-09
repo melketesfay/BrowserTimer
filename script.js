@@ -38,7 +38,6 @@ function setValues() {
     sec = document.querySelector(".secInput input").value;
     min = document.querySelector(".minInput input").value;
     hr = document.querySelector(".hourInput input").value;
-
     document.getElementById("alarm").currentTime = 0;
   }
 }
