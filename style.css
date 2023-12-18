@@ -211,7 +211,8 @@ svg{
         font-size: 10vw;
         justify-self: center;
         align-self: center;
-        color: rgb(161, 14, 14);
+        /* color: rgb(161, 14, 14); */
+        color: red;
     }
 
     .enterTime input {
@@ -251,7 +252,8 @@ svg{
         max-width: 9vw;
         font-family: Digital;
         background-color: rgb(31, 2, 2);
-        color: rgb(161, 14, 14);
+        /* color: rgb(161, 14, 14); */
+        color: red;
         outline-style: none;
         appearance: none;
         border: none;
