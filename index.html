@@ -1,55 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIMER</title>
+    <link rel="shortcut icon" href="favicon.PNG" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TIMER</title>
-  <link rel="shortcut icon" href="favicon.PNG" type="image/x-icon">
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <body>
+    <div class="container">
+      <div class="display">
+        <div class="display_hour">
+          <div class="text">HR</div>
+          <div class="hour" id="display">00</div>
+        </div>
+        <div class="display_min">
+          <div class="text">Min</div>
+          <div class="min" id="display">00</div>
+        </div>
+        <div class="display_sec">
+          <div class="text">Sec</div>
+          <div class="sec" id="display">00</div>
+        </div>
+      </div>
 
-<body>
-  <div class="container">
-    <div class="display">
-      <div class="display_hour">
-        <div class="text">HR</div>
-        <div class="hour" id="display">00</div>
+      <div class="enterTime">
+        <!-- right arrow SVG -->
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 256 512"
+          id="right_arrow"
+        >
+          <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+          <path
+            d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z"
+            fill="red"
+          />
+        </svg>
+
+        <div class="hourInput">
+          <label for="hourInput">Hr</label>
+          <input
+            id="hourInput"
+            type="number"
+            min="0"
+            max="23"
+            value="00"
+            placeholder="00"
+            maxlength="2"
+          />
+        </div>
+        <div class="minInput">
+          <label for="minInput">Min</label>
+          <input
+            id="minInput"
+            type="number"
+            min="0"
+            max="59"
+            value="00"
+            placeholder="00"
+            maxlength="2"
+          />
+        </div>
+        <div class="secInput">
+          <label for="secInput">Sec</label>
+          <input
+            id="secInput"
+            type="number"
+            min="0"
+            max="59"
+            value="00"
+            placeholder="00"
+            maxlength="2"
+          />
+        </div>
+
+        <!-- SVG left arrow -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 256 512"
+          id="left_arrow"
+        >
+          <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+          <path
+            d="M9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c9.2-9.2 22.9-11.9 34.9-6.9s19.8 16.6 19.8 29.6l0 256c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9l-128-128z"
+            fill="red"
+          />
+        </svg>
       </div>
-      <div class="display_min">
-        <div class="text">Min</div>
-        <div class="min" id="display">00</div>
-      </div>
-      <div class="display_sec">
-        <div class="text">Sec</div>
-        <div class="sec" id="display">00</div>
+      <div class="control">
+        <button type="submit" onclick="setValues()">Start</button>
+        <button id="stop" onclick="stopCount()">Stop</button>
+        <button onclick="resetCounter()">Reset</button>
       </div>
     </div>
-
-    <div class="enterTime">
-      <div class="hourInput">
-        <label for="hourInput">Hr</label>
-        <input id="hourInput" type="number" min="0" max="23" value="00" placeholder="00" maxlength="2" />
-      </div>
-      <div class="minInput">
-        <label for="minInput">Min</label>
-        <input id="minInput" type="number" min="0" max="59" value="00" placeholder="00" maxlength="2" />
-      </div>
-      <div class="secInput">
-        <label for="secInput">Sec</label>
-        <input id="secInput" type="number" min="0" max="59" value="00" placeholder="00" maxlength="2" />
-      </div>
-    </div>
-    <div class="control">
-      <button type="submit" onclick="setValues()">Start</button>
-      <button id="stop" onclick="stopCount()">Stop</button>
-      <button onclick="resetCounter()">Reset</button>
-    </div>
-  </div>
-</body>
-<audio id="alarm">
-  <source id="soundSource" src="digital-alarm-clock.mp3" type="audio/mp3" />
-</audio>
-<script src="script.js"></script>
-
+  </body>
+  <audio id="alarm">
+    <source id="soundSource" src="digital-alarm-clock.mp3" type="audio/mp3" />
+  </audio>
+  <script src="script.js"></script>
 </html>

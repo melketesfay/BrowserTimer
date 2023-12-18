@@ -2,24 +2,53 @@ console.log(`Hallo from Author \u00A9 Melke`);
 
 let timer;
 
-let sec = 0;
-let min = 0;
-let hr = 0;
+//User InputField
 
-document.querySelector(".secInput input").value = document.querySelector(
-  ".secInput input"
-).value = sec.toString().padStart(2, "0");
+let secValue = document.querySelector(".secInput input");
+let minValue = document.querySelector(".minInput input");
+let hrValue = document.querySelector(".hourInput input");
+
+//All Inputfields for input restriction to max 2 digits
+
+let inputControl = document.querySelectorAll("input");
+
+//CountDown Display numbers
+
+let secContent = document.querySelector(".sec");
+let minContent = document.querySelector(".min");
+let hrContent = document.querySelector(".hour");
+
+let allNumbers = document.querySelectorAll("#display")
+
+
+
+//Control Buttons
+let stopBtn = document.getElementById("stop")
+let buttons = document.querySelectorAll("button");
+
+//Alarm Sound
+
+let alarmSound = document.getElementById("alarm")
+
+
+
+// left and right arrows
+
+let leftArrow = document.getElementById("left_arrow")
+
+let rightArrow = document.getElementById("right_arrow")
 
 //function called when START button is clicked
 
 function setValues() {
-  if (!timer) {
-    sec = document.querySelector(".secInput input").value;
-    min = document.querySelector(".minInput input").value;
-    hr = document.querySelector(".hourInput input").value;
 
-    console.log(typeof sec)
-    document.getElementById("stop").innerHTML = "stop";
+
+  if (!timer) {
+    sec = secValue.value;
+    min =  minValue.value;
+    hr = hrValue.value;
+
+    stopBtn.innerHTML = "stop";
     let arr = [sec, min, hr];
 
     if (arr[0] > 59 || arr[1] > 59 || arr[2] > 23) {
@@ -29,69 +58,69 @@ function setValues() {
 
     //don't start timer if time is 0 (avoid annecessary sound alarm)
     if (arr.some((e) => e > 0)) {
-      document.getElementById("alarm").pause();
+      alarmSound.pause();
       timer = setInterval(secondCounter, 1000);
     }
-    // TRy stop alarm
-
-    //try stop
+   
     //restart counter every timer start is pressed
   } else if (timer) {
-    sec = document.querySelector(".secInput input").value;
-    min = document.querySelector(".minInput input").value;
-    hr = document.querySelector(".hourInput input").value;
-    document.getElementById("alarm").currentTime = 0;
+    sec = secValue.value;
+    min = minValue.value;
+    hr = hrValue.value;
+    alarmSound.currentTime = 0;
   }
 }
 
 function secondCounter() {
-  //set Seconds
-  let secContent = document.querySelector(".sec");
-  let secEdited = sec.toString().padStart(2, "0");
-  secContent.innerHTML = secEdited;
 
-  //set Minutes
-  let minContent = document.querySelector(".min");
-  let minEdited = min.toString().padStart(2, "0");
-  minContent.innerHTML = minEdited;
+  
+   //set Seconds
+  
 
-  //set Hours
+   secContent.innerHTML = sec.toString().padStart(2, "0");
 
-  let hrContent = document.querySelector(".hour");
-  let hrEdited = hr.toString().padStart(2, "0");
+   //set Minutes
+   
+ 
+   minContent.innerHTML = min.toString().padStart(2, "0");
+ 
+   //set Hours
+ 
+   hrContent.innerHTML = hr.toString().padStart(2, "0");
 
-  hrContent.innerHTML = hrEdited;
+  
+
+
   if (sec > 0) {
-    --sec;
+    sec--;
   } else if (min > 0) {
     sec = 59;
 
-    --min;
+    min--;
   } else if (hr > 0) {
     min = 59;
     sec = 59;
-    --hr;
+    hr--;
   }
   if (hr == 0 && min == 0) {
-    document
-      .querySelectorAll("#display")
-      .forEach((e) => (e.style.color = "red"));
+    
+      allNumbers.forEach((e) => (e.style.color = "red"));
   } else {
-    document
-      .querySelectorAll("#display")
-      .forEach((e) => (e.style.color = "rgb(49, 197, 19)"));
+    allNumbers.forEach((e) => (e.style.color = "rgb(49, 197, 19)"));
   }
 
-  let arr = [secEdited, minEdited, hrEdited];
+ 
+
+  let arr = [sec, min, hr];
   if (arr.every((e) => e == 0)) {
     clearInterval(timer);
     timer = false;
-    console.log(document.getElementById("alarm").currentTime);
-
-    document.getElementById("alarm").play();
+    console.log(alarmSound.currentTime);
+    document.getElementById("alarm").play()
+    // alarmSound.play();
     setTimeout(() => {
-      document.getElementById("alarm").pause();
-      console.log(document.getElementById("alarm").currentTime);
+      alarmSound.pause();
+      console.log(alarmSound.currentTime);
       console.log(
         "timer ended!!! sound alarm turned off automatically after 15sec"
       );
@@ -119,46 +148,53 @@ function secondCounter() {
 // document.addEventListener("click", stopAlarm);
 // // // function stop and play audio
 
+
+//function called when stop is pressed
+
 function stopCount() {
-  document.getElementById("alarm").currentTime = 0;
+  alarmSound.currentTime = 0;
   let arrTest = [
-    document.querySelector(".sec").innerHTML,
-    document.querySelector(".min").innerHTML,
-    document.querySelector(".hour").innerHTML,
+    secContent.innerHTML,
+    minContent.innerHTML,
+    hrContent.innerHTML,
   ];
   if (timer && arrTest.some((e) => e > 0)) {
     clearInterval(timer);
     timer = false;
-    document.getElementById("stop").innerHTML = "go";
-    document.getElementById("alarm").pause();
+    stopBtn.innerHTML = "go";
+    alarmSound.pause();
 
     console.log("timer stopped");
   } else if (arrTest.some((e) => e > 0)) {
-    document.getElementById("stop").innerHTML = "stop";
+    stopBtn.innerHTML = "stop";
     timer = setInterval(secondCounter, 1000);
   } else {
     clearInterval(timer);
     timer = false;
 
-    document.getElementById("alarm").pause();
+    alarmSound.pause();
   }
 }
 
+
+//function called when reset is pressed
+
+
 function resetCounter() {
-  document.getElementById("alarm").currentTime = 0;
-  document.getElementById("alarm").pause();
+  alarmSound.currentTime = 0;
+  alarmSound.pause();
   clearInterval(timer);
   timer = false;
-  document.getElementById("stop").innerHTML = "stop";
-  document.querySelector(".sec").innerHTML = "00";
-  document.querySelector(".min").innerHTML = "00";
-  document.querySelector(".hour").innerHTML = "00";
-  document.querySelector(".secInput input").value = "00";
-  document.querySelector(".minInput input").value = "00";
-  document.querySelector(".hourInput input").value = "00";
-  document
-    .querySelectorAll("#display")
-    .forEach((e) => (e.style.color = "rgb(49, 197, 19)"));
+  stopBtn.innerHTML = "stop";
+  secContent.innerHTML = "00";
+  minContent.innerHTML = "00";
+  hrContent.innerHTML = "00";
+  secValue.value = "00";
+  minValue.value = "00";
+  hrValue.value = "00";
+  allNumbers.forEach((e) => (e.style.color = "rgb(49, 197, 19)"));
+  leftArrow.style.display = "block"
+    rightArrow.style.display = "block"
 }
 
 // Keyboard Control
@@ -198,13 +234,16 @@ function addLeadingZero(event) {
   }
   // change the value of input
   event.target.value = newValue;
+
+
+  
 }
 
-let inputControl = document.querySelectorAll("input");
+
 
 inputControl.forEach((e) => e.addEventListener("input", addLeadingZero));
 
-let buttons = document.querySelectorAll("button");
+
 
 function buttonEffect(event) {
   this.style.backgroundColor = "red";
@@ -213,3 +252,21 @@ function buttonEffect(event) {
   }, 100);
 }
 buttons.forEach((e) => e.addEventListener("click", buttonEffect));
+
+
+
+//function stop arrows when user is typing
+
+
+
+inputControl.forEach(e=>e.addEventListener("input", stopArrows))
+
+
+function stopArrows(){
+
+ 
+    leftArrow.style.display = "none"
+    rightArrow.style.display = "none"
+
+
+}

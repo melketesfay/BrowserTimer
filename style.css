@@ -60,7 +60,8 @@ body {
     font-size: 5vw;
     justify-self: center;
     align-self: center;
-    color: rgb(161, 14, 14);
+    color: red;
+    /* color: rgb(161, 14, 14); */
 }
 
 .display_sec,
@@ -107,7 +108,9 @@ body {
     max-width: 9vw;
     font-family: Digital;
     background-color: rgb(31, 2, 2);
-    color: rgb(161, 14, 14);
+    /* color: rgb(161, 14, 14); */
+
+    color: red;
     outline-style: none;
     appearance: none;
     border: none;
@@ -162,6 +165,23 @@ input[type=number] {
 }
 
 
+
+#right_arrow, #left_arrow{
+    margin-top: 6rem;
+}
+
+
+#right_arrow{
+    animation: wiggle_left 1s ease-in-out  infinite;
+}
+#left_arrow{
+    animation: wiggle_right 1s ease-in-out  infinite;
+}
+
+
+svg{
+    width: 4rem;
+}
 
 @media only screen and (max-width: 600px) {
 
@@ -253,4 +273,66 @@ input[type=number] {
     .container {
         gap: 5vw;
     }
+
+
+    #right_arrow, #left_arrow{
+        margin-top: 2.5rem;
+    }
+    
+    
+    #right_arrow{
+        animation: wiggle_left 1s ease-in-out  infinite;
+    }
+    #left_arrow{
+        animation: wiggle_right 1s ease-in-out  infinite;
+    }
+    
+    
+    svg{
+        width: 2rem;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+@keyframes wiggle_left {
+    0%{
+        transform: translateX(-20px);
+    }
+
+    50%{
+        transform: translateX(0px);
+    }
+
+  
+
+    100%{
+        transform: translateX(-20px);
+    }
+}
+
+
+@keyframes wiggle_right {
+    0%{
+        transform: translateX(20px);
+    }
+
+    50%{
+        transform: translateX(0px);
+    }
+
+  
+
+    100%{
+        transform: translateX(20px);
+    }
+
+    
 }
