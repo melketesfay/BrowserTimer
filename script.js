@@ -17,6 +17,8 @@ function setValues() {
     sec = document.querySelector(".secInput input").value;
     min = document.querySelector(".minInput input").value;
     hr = document.querySelector(".hourInput input").value;
+
+    console.log(typeof sec)
     document.getElementById("stop").innerHTML = "stop";
     let arr = [sec, min, hr];
 
