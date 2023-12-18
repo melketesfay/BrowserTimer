@@ -111,7 +111,7 @@ function secondCounter() {
 
  
 
-  let arr = [sec, min, hr];
+  let arr = [secContent.innerHTML, minContent.innerHTML, hrContent.innerHTML];
   if (arr.every((e) => e == 0)) {
     clearInterval(timer);
     timer = false;
