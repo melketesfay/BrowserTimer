@@ -18,34 +18,28 @@ let secContent = document.querySelector(".sec");
 let minContent = document.querySelector(".min");
 let hrContent = document.querySelector(".hour");
 
-let allNumbers = document.querySelectorAll("#display")
-
-
+let allNumbers = document.querySelectorAll("#display");
 
 //Control Buttons
-let stopBtn = document.getElementById("stop")
+let stopBtn = document.getElementById("stop");
 let buttons = document.querySelectorAll("button");
 
 //Alarm Sound
 
-let alarmSound = document.getElementById("alarm")
-
-
+let alarmSound = document.getElementById("alarm");
 
 // left and right arrows
 
-let leftArrow = document.getElementById("left_arrow")
+let leftArrow = document.getElementById("left_arrow");
 
-let rightArrow = document.getElementById("right_arrow")
+let rightArrow = document.getElementById("right_arrow");
 
 //function called when START button is clicked
 
 function setValues() {
-
-
   if (!timer) {
     sec = secValue.value;
-    min =  minValue.value;
+    min = minValue.value;
     hr = hrValue.value;
 
     stopBtn.innerHTML = "stop";
@@ -61,7 +55,7 @@ function setValues() {
       alarmSound.pause();
       timer = setInterval(secondCounter, 1000);
     }
-   
+
     //restart counter every timer start is pressed
   } else if (timer) {
     sec = secValue.value;
@@ -72,24 +66,17 @@ function setValues() {
 }
 
 function secondCounter() {
+  //set Seconds
 
-  
-   //set Seconds
-  
+  secContent.innerHTML = sec.toString().padStart(2, "0");
 
-   secContent.innerHTML = sec.toString().padStart(2, "0");
+  //set Minutes
 
-   //set Minutes
-   
- 
-   minContent.innerHTML = min.toString().padStart(2, "0");
- 
-   //set Hours
- 
-   hrContent.innerHTML = hr.toString().padStart(2, "0");
+  minContent.innerHTML = min.toString().padStart(2, "0");
 
-  
+  //set Hours
 
+  hrContent.innerHTML = hr.toString().padStart(2, "0");
 
   if (sec > 0) {
     sec--;
@@ -103,20 +90,17 @@ function secondCounter() {
     hr--;
   }
   if (hr == 0 && min == 0) {
-    
-      allNumbers.forEach((e) => (e.style.color = "red"));
+    allNumbers.forEach((e) => (e.style.color = "red"));
   } else {
     allNumbers.forEach((e) => (e.style.color = "rgb(49, 197, 19)"));
   }
-
- 
 
   let arr = [secContent.innerHTML, minContent.innerHTML, hrContent.innerHTML];
   if (arr.every((e) => e == 0)) {
     clearInterval(timer);
     timer = false;
     console.log(alarmSound.currentTime);
-    document.getElementById("alarm").play()
+    document.getElementById("alarm").play();
     // alarmSound.play();
     setTimeout(() => {
       alarmSound.pause();
@@ -148,7 +132,6 @@ function secondCounter() {
 // document.addEventListener("click", stopAlarm);
 // // // function stop and play audio
 
-
 //function called when stop is pressed
 
 function stopCount() {
@@ -176,9 +159,7 @@ function stopCount() {
   }
 }
 
-
 //function called when reset is pressed
-
 
 function resetCounter() {
   alarmSound.currentTime = 0;
@@ -193,8 +174,8 @@ function resetCounter() {
   minValue.value = "00";
   hrValue.value = "00";
   allNumbers.forEach((e) => (e.style.color = "rgb(49, 197, 19)"));
-  leftArrow.style.display = "block"
-    rightArrow.style.display = "block"
+  leftArrow.style.display = "block";
+  rightArrow.style.display = "block";
 }
 
 // Keyboard Control
@@ -234,16 +215,9 @@ function addLeadingZero(event) {
   }
   // change the value of input
   event.target.value = newValue;
-
-
-  
 }
 
-
-
 inputControl.forEach((e) => e.addEventListener("input", addLeadingZero));
-
-
 
 function buttonEffect(event) {
   this.style.backgroundColor = "red";
@@ -253,20 +227,11 @@ function buttonEffect(event) {
 }
 buttons.forEach((e) => e.addEventListener("click", buttonEffect));
 
-
-
 //function stop arrows when user is typing
 
+inputControl.forEach((e) => e.addEventListener("input", stopArrows));
 
-
-inputControl.forEach(e=>e.addEventListener("input", stopArrows))
-
-
-function stopArrows(){
-
- 
-    leftArrow.style.display = "none"
-    rightArrow.style.display = "none"
-
-
+function stopArrows() {
+  leftArrow.style.display = "none";
+  rightArrow.style.display = "none";
 }
